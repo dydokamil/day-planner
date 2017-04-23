@@ -35,6 +35,15 @@ class User
      */
     private $password;
 
+    /**
+     * One User has Many Tasks.
+     * @OneToMany(targetEntity="Task", mappedBy="User")
+     */
+    private $tasks;
+
+    public function __construct() {
+        $this->tasks = new ArrayCollection();
+    }
 
     /**
      * Get id

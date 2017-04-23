@@ -42,6 +42,12 @@ class Task
      */
     private $finish;
 
+    /**
+     * Many Tasks have One User.
+     * @ManyToOne(targetEntity="User", inversedBy="tasks")
+     * @JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     /**
      * Get id
