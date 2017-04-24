@@ -45,7 +45,6 @@ class Task
     /**
      * Many Tasks have One User.
      * @ORM\ManyToOne(targetEntity="User", inversedBy="tasks")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 

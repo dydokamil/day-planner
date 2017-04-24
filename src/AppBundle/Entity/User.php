@@ -38,7 +38,7 @@ class User
 
     /**
      * One User has Many Tasks.
-     * @ORM\OneToMany(targetEntity="Task", mappedBy="User")
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="user")
      */
     private $tasks;
 
