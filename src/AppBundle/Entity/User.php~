@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
@@ -37,12 +38,16 @@ class User
 
     /**
      * One User has Many Tasks.
-     * @ORM\OneToMany(targetEntity="Task", mappedBy="User")
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="user")
      */
     private $tasks;
 
     public function __construct() {
         $this->tasks = new ArrayCollection();
+    }
+
+    public function __toString(){
+        return $this->getLogin();
     }
 
     /**
@@ -102,5 +107,38 @@ class User
     {
         return $this->password;
     }
-}
 
+    /**
+     * Add task
+     *
+     * @param \AppBundle\Entity\Task $task
+     *
+     * @return User
+     */
+    public function addTask(\AppBundle\Entity\Task $task)
+    {
+        $this->tasks[] = $task;
+
+        return $this;
+    }
+
+    /**
+     * Remove task
+     *
+     * @param \AppBundle\Entity\Task $task
+     */
+    public function removeTask(\AppBundle\Entity\Task $task)
+    {
+        $this->tasks->removeElement($task);
+    }
+
+    /**
+     * Get tasks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTasks()
+    {
+        return $this->tasks;
+    }
+}

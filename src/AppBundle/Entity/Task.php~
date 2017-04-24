@@ -45,9 +45,14 @@ class Task
     /**
      * Many Tasks have One User.
      * @ORM\ManyToOne(targetEntity="User", inversedBy="tasks")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
+
+    /**
+     * One Task has One Priority.
+     * @ORM\OneToOne(targetEntity="Priority")
+     */
+    private $priority;
 
     /**
      * Get id
@@ -130,5 +135,52 @@ class Task
     {
         return $this->finish;
     }
-}
 
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Task
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set priority
+     *
+     * @param \AppBundle\Entity\Priority $priority
+     *
+     * @return Task
+     */
+    public function setPriority(\AppBundle\Entity\Priority $priority = null)
+    {
+        $this->priority = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return \AppBundle\Entity\Priority
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+}

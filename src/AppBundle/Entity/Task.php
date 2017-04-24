@@ -49,6 +49,12 @@ class Task
     private $user;
 
     /**
+     * One Task has One Priority.
+     * @ORM\OneToOne(targetEntity="Priority")
+     */
+    private $priority;
+
+    /**
      * Get id
      *
      * @return int
@@ -152,5 +158,29 @@ class Task
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set priority
+     *
+     * @param \AppBundle\Entity\Priority $priority
+     *
+     * @return Task
+     */
+    public function setPriority(\AppBundle\Entity\Priority $priority = null)
+    {
+        $this->priority = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return \AppBundle\Entity\Priority
+     */
+    public function getPriority()
+    {
+        return $this->priority;
     }
 }

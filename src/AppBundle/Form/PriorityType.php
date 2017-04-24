@@ -6,14 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TaskType extends AbstractType
+class PriorityType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('start')->add('finish')->add('user')->add('priority');
+        $builder->add('name');
     }
     
     /**
@@ -22,7 +22,7 @@ class TaskType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Task'
+            'data_class' => 'AppBundle\Entity\Priority'
         ));
     }
 
@@ -31,7 +31,7 @@ class TaskType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_task';
+        return 'appbundle_priority';
     }
 
 
